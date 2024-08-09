@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { ref, set, push } from "firebase/database";
-import { database, auth } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useEffect, useState } from 'react';
+import { ref, push } from 'firebase/database';
+import { database, auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Tracker = () => {
   const [user] = useAuthState(auth);
@@ -16,17 +16,19 @@ const Tracker = () => {
 
         const sessionRef = ref(database, `sessions/${user.uid}`);
         push(sessionRef, {
+          email: user.email,
+          name: user.displayName,
           clicks,
           sessionDuration,
           timestamp: new Date().toISOString(),
         });
       };
 
-      window.addEventListener("beforeunload", logSession);
+      window.addEventListener('beforeunload', logSession);
 
       return () => {
         logSession();
-        window.removeEventListener("beforeunload", logSession);
+        window.removeEventListener('beforeunload', logSession);
       };
     }
   }, [clicks, startTime, user]);
