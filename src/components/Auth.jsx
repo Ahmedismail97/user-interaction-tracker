@@ -20,7 +20,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container flex flex-col items-center">
+    <div className="container flex flex-col items-center">
       {user ? (
         <>
           <img src={user.photoURL} alt="User Avatar" className="rounded-full w-16 h-16" />

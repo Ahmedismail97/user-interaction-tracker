@@ -34,7 +34,7 @@ const Tracker = () => {
   }, [clicks, startTime, user]);
 
   return (
-    <div className="tracker-container text-center">
+    <div className="container text-center">
       <h3 className="text-lg mt-4">Button Clicks: {clicks}</h3>
       <button
         className="mt-4 px-4 py-2 bg-green-500 text-white rounded"
